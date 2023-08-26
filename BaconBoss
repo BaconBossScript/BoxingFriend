@@ -1,0 +1,48 @@
+if game.PlaceId == 10857807258 then
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | Boxing Friends Simulator ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+_G.boss20 = true
+_G.egg = true
+
+function boss20()
+      while _G.boss20 == true do   
+     game:GetService("ReplicatedStorage").Events.NPC:FireServer("Kill","Level 20")
+      wait(0.0000000001)
+    end
+end
+
+function egg()
+     while _G.egg == true do
+     game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer("Basic",1)
+     wait(0.00000000001)
+    end
+end
+
+
+
+local mainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+mainTab:AddToggle({
+	Name = "Auto Kill Boss 20",
+	Default = false,
+	Callback = function(Value)
+		_G.boss20 = Value
+        boss20()
+	end    
+})
+
+mainTab:AddToggle({
+	Name = "Auto Hatch Cheapest Egg",
+	Default = false,
+	Callback = function(Value)
+		_G.egg = Value
+        egg()
+	end    
+})
+
+end
